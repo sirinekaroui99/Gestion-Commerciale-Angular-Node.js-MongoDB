@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profil</title>
+  <style>
+    /* Styles CSS pour le formulaire et le layout de la page */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 5% auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Profil</h1>
+        <form (ngSubmit)="submitForm(profileForm)" #profileForm="ngForm">
+          <label for="email">Email:</label> 
+          <input type="text" id="email" name="email" [(ngModel)]="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+<div *ngIf="profileForm.controls['email']?.invalid && (profileForm.controls['email']?.dirty || profileForm.controls['email']?.touched)">
+  <div class="error-message" *ngIf="profileForm.controls['email']?.errors?.['required']">Le champ est obligatoire.</div>
+  <div class="error-message" *ngIf="profileForm.controls['email']?.errors?.['pattern']">L'adresse e-mail n'est pas valide.</div>
+</div>
+
+<label for="password">Ancien mot de passe:</label>
+<div class="input-container">
+  
+  <div class="password-input">
+    <input type="{{ showNewPassword ? 'text' : 'password' }}" placeholder="Ancien mot de passe" [(ngModel)]="admin.password" name="password" required>
+    <span class="password-toggle" (click)="toggleNewPasswordVisibility()">
+      <i class="fa" [ngClass]="showNewPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+    </span>
+  </div>
+  
+</div>
+
+
+          
+          <div class="error-message">{{errorMessage}}</div>
+
+          <label for="password">Nouveau mot de passe:</label>
+
+          <div class="input-container">
+            <div class="password-input">
+              <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="Nouveau mot de passe" name="nouveauPassword" [(ngModel)]="admin['nouveauPassword']" required minlength="7">
+              <span class="password-toggle" (click)="togglePasswordVisibility()">
+                <i class="fa password-toggle" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+              </span>
+            </div>
+            
+          </div>
+          
+           
+
+          <div *ngIf="profileForm.controls['nouveauPassword']?.invalid && (profileForm.controls['nouveauPassword']?.dirty || profileForm.controls['nouveauPassword']?.touched)">
+            <div class="error-message" *ngIf="profileForm.controls['nouveauPassword']?.errors?.['required']">Le champ est obligatoire.</div>
+            <div class="error-message" *ngIf="profileForm.controls['nouveauPassword']?.errors?.['minlength']">Le mot de passe doit contenir au moins 7 caractères.</div>
+          </div>
+        
+          <button   type="submit">Enregistrer</button>
+
+        </form>
+      </div>
+</body>
+</html>

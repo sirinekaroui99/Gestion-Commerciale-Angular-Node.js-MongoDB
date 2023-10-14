@@ -1,0 +1,37 @@
+.search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input {
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: #555;
+    transition: border-color 0.3s;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #66afe9;
+  }
+  
+  .search-button {
+    padding: 8px;
+    background-color: #f2f2f2;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .search-button i {
+    color: #888;
+    font-size: 18px;
+  }
+  
+  .search-button:hover {
+    background-color: #e0e0e0;
+  }
+  

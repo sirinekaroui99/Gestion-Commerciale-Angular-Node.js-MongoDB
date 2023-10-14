@@ -1,0 +1,152 @@
+/* Style pour le fond semi-transparent */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.cote{
+     display: inline-block;
+    width: 45%; /* Ajustez la largeur selon vos besoins */
+    margin-right: 5px; /* Espacement entre les deux inputs */
+    
+}
+.long-text {
+  word-break: break-all;
+}
+.espace{
+    margin-right: 26px;
+}
+  
+.label-inline {
+    display: inline-block;
+    width: 100%; /* Ajustez la largeur du label selon vos besoins */
+}
+/* Style pour la boîte modale */
+.modal {
+    background-color: #faf8f8;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    max-height: 1000px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+label{
+    color: rgb(95, 95, 95); 
+}
+
+/* Style pour les champs de formulaire */
+.modal input[type="text"],
+.modal input[type="number"] {
+    border: 1px solid #b1b0b0; /* Couleur du cadre par défaut */
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px; 
+    background-color: #e5ecee;
+    border-radius: 5px;
+}
+
+/* Style pour le bouton de fermeture */
+.modal .close-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal .close-button:hover {
+    background-color: #45a049;
+}
+
+.modal h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.modal-header{
+    margin-top: -10px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: large;
+}
+
+/* Style pour le bouton "Ajouter" */
+.button-add {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .button-add:hover {
+    background-color: #45a049;
+  }
+  .button-update {
+    background-color: #e2a217;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .button-update:hover {
+    background-color: #be870e;
+  }
+  /* Style pour le bouton "Supprimer" */
+  .button-delete {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .button-delete:hover {
+    background-color: #d32f2f;
+  }
+  
+  .red-star {
+    color: red;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+
+  }
+
+  .has-errors .modal {
+    height: auto; /* ou une valeur spécifique en pixels ou en pourcentage */
+  }
+
+
+  

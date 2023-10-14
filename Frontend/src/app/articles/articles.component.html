@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Liste des articles</title> 
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Liste des articles</h1>
+      
+      <div class="search-container">
+        <div class="search-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <input type="text" [(ngModel)]="searchText" class="search-input" placeholder="Rechercher nom article" (input)="search()"  (keydown)="handleKeyDown($event)">
+      </div>
+      
+      
+    </div>
+    <button class="add-btn" (click)="ouvrirModalAjoutArticle()"><i class="fas fa-plus icones"></i>Ajouter un article</button>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Référence</th>
+            <th>Désignation</th>
+            <th>Prix d'achat</th>
+            <th>Prix de vente</th>
+            <th>Fournisseur</th>
+            <th>Quantité en stock</th>
+            <th>Quantité vendu</th>
+            <th>Emplacement dans la boutique</th>
+            <th>Emplacement dans le dépôt</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let article of TabArticles ;let i = index">
+            <td>{{article.reference}}</td>
+            <td class="long-text">{{article.designation}}</td>
+            <td>{{article.prixAchat}}</td>
+            <td>{{article.prixVente}}</td>
+            <td>{{article.fournisseur}}</td>
+            <td>{{article.quantiteEnStock}}</td>
+            <td>{{article.quantiteVendu}}</td>
+            <td>{{article.emplacementDansBoutique}}</td>
+            <td>{{article.emplacementDansdepot}}</td>
+            <td class="td"> 
+                <button type="button" class="btn btn-icon btn-danger " (click)="delete(article._id)" >
+                  <i class="fa fa-trash icon"></i>
+                </button>
+                <button class="action" type="button" class="btn btn-icon btn-warning" (click)="update(article._id)" >
+                  <i class="fa fa-edit icon"></i>
+                </button>
+
+            </td>
+          </tr>
+           
+           
+          <!-- Ajoutez ici d'autres lignes pour chaque article -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

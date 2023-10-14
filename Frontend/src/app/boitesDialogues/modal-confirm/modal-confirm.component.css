@@ -1,0 +1,67 @@
+
+/* Style pour le fond semi-transparent */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.modal {
+    background-color: #faf8f8;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    max-height: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.content {
+    text-align: center;
+    background-color: #faf8f8;
+  }
+  
+  .message {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .yes,
+  .no {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .yes {
+    background-color: #49d837;
+    color: #ffffff;
+    border: none;
+  }
+  
+  .no {
+    background-color: #bebebe;
+    color: #ffffff;
+    border: none;
+  }
+  
+  .yes:hover{
+    background-color: #40b831;
+  }
+  .no:hover {
+    background-color: #c0392b;
+  }
+  

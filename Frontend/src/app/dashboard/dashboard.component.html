@@ -1,0 +1,49 @@
+<div class="dashboard-container">
+  <div class="row">
+    <div class="card cmd">
+      <i class="fas fa-shopping-cart shop"></i>
+      <h3  >Nombre de commandes ce mois-ci</h3>
+      <p class="pshop">{{ totalCommandes }}</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-cubes"></i>
+      <h3>Valeur du stock</h3>
+      <p>{{ valeurStock }}</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-boxes"></i>
+      <h3>Nombre d'articles</h3>
+      <p>{{ volumeStock }}</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-users"></i>
+      <h3>Nombre de clients</h3>
+      <p>{{ totalClients }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="chart-container">
+      <!-- Pie Chart goes here -->
+      <canvas id="pieChart"></canvas>
+    </div>
+    <div class="chart-container">
+      <!-- Pie Chart goes here -->
+      <canvas id="pieChartStock"></canvas>
+    </div>
+    
+  </div>
+   
+  
+  
+  <div class="row">
+    <div class="chart-container">
+      <!-- Line Chart goes here -->
+      <canvas class="linechart" id="linechartSemaine"></canvas>
+    </div>
+    <div class="chart-container"> 
+      <!-- Line Chart goes here -->
+    
+      <canvas class="linechart" id="linechartMois"></canvas>
+    </div>
+  </div>  
+</div>

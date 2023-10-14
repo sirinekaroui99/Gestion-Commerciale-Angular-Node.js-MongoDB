@@ -1,0 +1,98 @@
+ 
+
+div.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+
+  }
+   /* Styles CSS pour le formulaire et le layout de la page */
+   body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+  }
+  .input{
+    width: 100%;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  .password-toggle{
+    margin-right : 3%;
+    margin-top: -1.5%;
+
+  }
+
+  .input-container {
+    position: relative;
+  }
+  
+  .input-container .password-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-container input[type="password"],
+   input[type="text"] {
+    padding-right: 40px;
+    width: 100%;
+  }
+  
+  .input-container .password-toggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .input-container .password-toggle i {
+    font-size: 18px;
+  }
+  

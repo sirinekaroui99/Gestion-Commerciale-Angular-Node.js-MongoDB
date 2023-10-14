@@ -1,0 +1,55 @@
+<h2>Imprimer une commande</h2>
+<div class="custom-form-group">
+    <label for="typeCommande">Choisir le type de la commande à imprimer:</label>
+    <div class="custom-input-group">
+      <select id="typeCommande" name="typeCommande" #typeCommande class="custom-select">
+        <option value="..."></option>
+        <option value="bonLivraison">Bon de livraison</option>
+        <option value="facture">Facture</option>
+        <option value="devis">Devis</option>
+      </select>
+      <button id="btnValider" (click)="btnValiderClick(typeCommande.value)" class="custom-button">Valider</button>
+    </div>
+  </div>
+
+
+  <div class="container-table">
+
+  
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Num</th>
+           <th>Date</th>
+          <th>Montant Total</th>
+          <th>TVA</th>
+          <th>Timbre Fiscal</th>
+          <th>Total Net TTC</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let commande of TabCommandes;let i = index">
+          <td>{{commande.num}}</td>
+           <td>{{commande.date}}</td>
+          <td>{{commande.TotalMontant}}</td>
+          <td>{{commande.TVA}}</td>
+          <td>{{commande.timbreFiscal}}</td>
+          <td>{{commande.totalNetTTC}}</td>
+          <td  > 
+            <div class="td">
+            <button type="button" class="btn btn-icon btn-info " (click)="view(commande._id)" >
+              <i class="fa fa-eye"  ></i>
+            </button>
+
+           
+            <button type="button" class="btn btn-icon btn-imprimer" (click)="imprimer(commande._id)" >
+             Imprimer
+            </button></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

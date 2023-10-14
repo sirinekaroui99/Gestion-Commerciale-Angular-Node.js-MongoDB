@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Liste des clients</title> 
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Liste des clients</h1>
+      
+      <div class="search-container">
+        <div class="search-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <input type="text" [(ngModel)]="searchText" class="search-input" placeholder="Rechercher nom client" (input)="search()"  (keydown)="handleKeyDown($event)">
+      </div>
+    </div>
+    
+    <button class="add-btn" (click)="ouvrirModalAjoutClient()"><i class="fas fa-plus icones"></i>Ajouter un client</button>
+    
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Téléphone</th>
+            <th>MF</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of TabClients ;let i = index">
+            <td>{{ client.nom }}</td>
+            <td>{{ client.adresse }}</td>
+            <td>{{ client.telephone }}</td>
+            <td>{{ client.mf }}</td>
+            <td style="width: 10%;"> 
+              <div class="td">
+
+              
+                <button type="button" class="btn btn-icon btn-danger" (click)="delete(client._id)">
+                  <i class="fa fa-trash icon"></i>
+                </button>
+                <button class="action" type="button" class="btn btn-icon btn-warning" (click)="update(client._id)">
+                  <i class="fa fa-edit icon"></i>
+                </button>
+               </div> 
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

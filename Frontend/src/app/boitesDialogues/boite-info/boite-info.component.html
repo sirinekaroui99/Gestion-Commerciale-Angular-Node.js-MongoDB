@@ -1,0 +1,64 @@
+<div class="modal-overlay">
+    <div class="modal">
+        <div class="modal-header">
+            <div class="header-content">
+             
+              <h4 class="modal-title">Informations de la commande</h4>
+               <button class="close-button" (click)="annuler()">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+      <div class="modal-body">
+        <div class="client-card">
+          <div class="client-info">
+            <h4>Client : </h4> 
+            <p><strong>Nom:</strong> {{ commande.client.nom }}</p>
+            <p><strong>Adresse:</strong> {{ commande.client.adresse }}</p>
+            <p><strong>Téléphone:</strong> {{ commande.client.telephone }}</p>
+            <p><strong>MF:</strong> {{ commande.client.mf }}</p>
+          </div>
+          <div class="livraison-info">
+            <p><strong>N° commande :</strong> {{ commande.num }}</p>
+            <p><strong>Type :</strong> {{ commande.type }}</p>
+            <hr>
+            <div *ngIf="!facture">
+              <h4>Information de livraison : </h4>
+            <p><strong>Chauffeur:</strong> {{ commande.chauffeur }}</p>
+            <p><strong>Matricule Camion:</strong> {{ commande.matriculeCamion }}</p>
+            </div>
+            
+          </div>
+        </div>
+        <h4>Articles : </h4>
+        <hr>
+        <table class="articles-table">
+          <thead>
+            <tr>
+              <th>Référence</th>
+              <th>Désignation</th>
+              <th>Quantité</th>
+              <th>Prix de vente</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let article of commande.articles">
+              <td>{{ article.reference }}</td>
+              <td>{{ article.designation }}</td>
+              <td>{{ article.quantite }}</td>
+              <td>{{ article.prixVente }}</td>
+              <td>{{ article.total }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="annuler()">Fermer</button>
+      </div>
+      -->
+      
+    </div>
+  </div>
+  

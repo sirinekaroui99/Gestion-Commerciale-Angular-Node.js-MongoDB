@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Liste des commandes</title> 
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Liste des commandes</h1>
+      
+      <div class="search-container">
+        <input type="date" class="search-input" [(ngModel)]="searchDate" placeholder="Rechercher par date">
+        <button class="search-button" (click)="search()">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+
+    
+    
+    <!--<button class="add-btn" [routerLink]="'/ajouter-commande'" routerLinkActive="active">Ajouter une commande</button>
+    -->
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Num</th>
+             <th>Date</th>
+            <th>Montant Total</th>
+            <th>TVA</th>
+            <th>Timbre Fiscal</th>
+            <th>Total Net TTC</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let commande of TabFiltrer;let i = index">
+            <td>{{commande.num}}</td>
+             <td>{{commande.date}}</td>
+            <td>{{commande.TotalMontant}}</td>
+            <td>{{commande.TVA}}</td>
+            <td>{{commande.timbreFiscal}}</td>
+            <td>{{commande.totalNetTTC}}</td>
+            <td  > 
+              <div class="td">
+              <button type="button" class="btn btn-icon btn-info " (click)="view(commande._id)" >
+                <i class="fa fa-eye"  ></i>
+              </button>
+
+              <button type="button" class="btn btn-icon btn-danger" (click)="delete(commande._id)">
+                <i class="fa fa-trash icon"></i>
+              </button>
+              <button type="button" class="btn btn-icon btn-warning"  (click)="update(commande._id)">
+                <i class="fa fa-edit icon"></i>
+              </button></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

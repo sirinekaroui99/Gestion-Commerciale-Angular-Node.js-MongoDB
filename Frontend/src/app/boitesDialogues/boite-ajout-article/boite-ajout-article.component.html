@@ -1,0 +1,160 @@
+ <div class="modal-overlay"   *ngIf="isModal">
+  <div class="modal">
+
+  
+<div class="modal-header " *ngIf=!id>
+    <h4 class="modal-title">Ajouter article</h4>
+  </div>
+  <div class="modal-body" *ngIf=!id>
+    <form  #articleForm="ngForm">
+      <div class="form-group">
+        <label for="reference">Référence :</label>
+        <input type="text" class="form-control" id="reference" [(ngModel)]="reference" name="reference" >
+      </div>
+      <div class="form-group">
+        <label for="designation">Désignation :  <span class="red-star">*</span></label>
+        <input type="text" class="form-control long-text" id="designation" [(ngModel)]="designation" name="designation" required>
+        <div *ngIf="articleForm.controls['designation']?.invalid && (articleForm.controls['designation']?.dirty || articleForm.controls['designation']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['designation']?.errors?.['required']">Le champ est obligatoire.</div>
+         </div>
+      
+      </div>
+  
+      <div class="cote espace">
+        <label for="prixAchat" class="label-inline">Prix d'achat :  <span class="red-star">*</span></label>
+        <input type="number" class="form-control" id="prixAchat" [(ngModel)]="prixAchat" name="prixAchat" required>
+        <div *ngIf="articleForm.controls['prixAchat']?.invalid && (articleForm.controls['prixAchat']?.dirty || articleForm.controls['prixAchat']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['prixAchat']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div>
+  
+      <div class="cote">
+        <label for="prixVente" class="label-inline">Prix de vente : <span class="red-star">*</span></label>
+        <input type="number" class="form-control" id="prixVente" [(ngModel)]="prixVente" name="prixVente" required>
+        <div *ngIf="articleForm.controls['prixVente']?.invalid && (articleForm.controls['prixVente']?.dirty || articleForm.controls['prixVente']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['prixVente']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="fournisseur">Fournisseur :  <span class="red-star">*</span></label>
+        <input type="text" class="form-control" id="fournisseur" [(ngModel)]="fournisseur" name="fournisseur" required>
+        <div *ngIf="articleForm.controls['fournisseur']?.invalid && (articleForm.controls['fournisseur']?.dirty || articleForm.controls['fournisseur']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['fournisseur']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div>
+      <div class="cote espace">
+        <label for="quantiteEnStock">Quantité en stock :  <span class="red-star">*</span></label>
+        <input type="number" class="form-control" id="quantiteEnStock" [(ngModel)]="quantiteEnStock" name="quantiteEnStock" required>
+        <div *ngIf="articleForm.controls['quantiteEnStock']?.invalid && (articleForm.controls['quantiteEnStock']?.dirty || articleForm.controls['quantiteEnStock']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['quantiteEnStock']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+
+      </div>
+      <div class="cote">
+        <label for="quantiteVendu">Quantité vendu : <span class="red-star">*</span></label>
+        <input type="number" class="form-control" id="quantiteVendu" [(ngModel)]="quantiteVendu" name="quantiteVendu" required>
+        <div *ngIf="articleForm.controls['quantiteVendu']?.invalid && (articleForm.controls['quantiteVendu']?.dirty || articleForm.controls['quantiteVendu']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['quantiteVendu']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div> 
+
+      <div class="cote espace">
+        <label for="emplacementDansBoutique">Emplacement dans la boutique : <span class="red-star">*</span></label>
+        <input type="text" class="form-control" id="emplacementDansBoutique" [(ngModel)]="emplacementDansBoutique" name="emplacementDansBoutique" required>
+        <div *ngIf="articleForm.controls['emplacementDansBoutique']?.invalid && (articleForm.controls['emplacementDansBoutique']?.dirty || articleForm.controls['emplacementDansBoutique']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['emplacementDansBoutique']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div>
+
+      <div class="cote">
+        <label for="emplacementDansdepot">Emplacement dans la dépôt : <span class="red-star">*</span></label>
+        <input type="text" class="form-control" id="emplacementDansdepot" [(ngModel)]="emplacementDansdepot" name="emplacementDansdepot" required>
+        <div *ngIf="articleForm.controls['emplacementDansdepot']?.invalid && (articleForm.controls['emplacementDansdepot']?.dirty || articleForm.controls['emplacementDansdepot']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['emplacementDansdepot']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn button-add" (click)="onAddArticle(addForm,articleForm)">Ajouter</button>
+      <button type="button" class="btn button-delete" (click)="annuler()">Annuler</button>
+    </form>
+  </div> 
+  <div class="modal-header" *ngIf=id>
+    <h4 class="modal-title">Modifier l'article</h4>
+  </div>
+  <div class="modal-body" *ngIf=id>
+    <form #articleForm="ngForm">
+      <div class="form-group">
+        <label for="designation">Désignation :  <span class="red-star">*</span></label>
+        <input type="text" class="form-control" id="designation" [(ngModel)]="designation" name="designation" required>
+        <div *ngIf="articleForm.controls['designation']?.invalid && (articleForm.controls['designation']?.dirty || articleForm.controls['designation']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['designation']?.errors?.['required']">Le champ est obligatoire.</div>
+         </div>
+      </div>
+   
+      <div class="cote espace">
+        <label class="label-inline" for="prixAchat">Prix Achat :  <span class="red-star">*</span></label>
+        <input type="number" class="form-control" id="prixAchat" [(ngModel)]="prixAchat" name="prixAchat" required>
+        <div *ngIf="articleForm.controls['prixAchat']?.invalid && (articleForm.controls['prixAchat']?.dirty || articleForm.controls['prixAchat']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['prixAchat']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div>
+
+
+      <div class="cote">
+        <label  class="label-inline" for="prixVente">Prix de vente :  <span class="red-star">*</span></label>
+        <input type="number" class="form-control" id="prixVente" [(ngModel)]="prixVente" name="prixVente" required>
+        <div *ngIf="articleForm.controls['prixVente']?.invalid && (articleForm.controls['prixVente']?.dirty || articleForm.controls['prixVente']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['prixVente']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="fournisseur">Fournisseur :  <span class="red-star">*</span></label>
+        <input type="text" class="form-control" id="fournisseur" [(ngModel)]="fournisseur" name="fournisseur" required>
+        <div *ngIf="articleForm.controls['fournisseur']?.invalid && (articleForm.controls['fournisseur']?.dirty || articleForm.controls['fournisseur']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['fournisseur']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div>
+
+      <div class="cote espace">
+        <label for="quantiteEnStock">Quantité en stock :  <span class="red-star">*</span></label>
+        <input type="number" class="form-control" id="quantiteEnStock" [(ngModel)]="quantiteEnStock" name="quantiteEnStock" required>
+        <div *ngIf="articleForm.controls['quantiteEnStock']?.invalid && (articleForm.controls['quantiteEnStock']?.dirty || articleForm.controls['quantiteEnStock']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['quantiteEnStock']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div>
+
+
+      <div class="cote">
+        <label for="quantiteVendu">Quantité vendu : <span class="red-star">*</span></label>
+        <input type="number" class="form-control" id="quantiteVendu" [(ngModel)]="quantiteVendu" name="quantiteVendu" required>
+        <div *ngIf="articleForm.controls['quantiteVendu']?.invalid && (articleForm.controls['quantiteVendu']?.dirty || articleForm.controls['quantiteVendu']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['quantiteVendu']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div> 
+
+      <div class="cote espace">
+        <label for="emplacementDansBoutique">Emplacement dans la boutique : <span class="red-star">*</span></label>
+        <input type="text" class="form-control" id="emplacementDansBoutique" [(ngModel)]="emplacementDansBoutique" name="emplacementDansBoutique" required>
+        <div *ngIf="articleForm.controls['emplacementDansBoutique']?.invalid && (articleForm.controls['emplacementDansBoutique']?.dirty || articleForm.controls['emplacementDansBoutique']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['emplacementDansBoutique']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div>
+
+      <div class="cote">
+        <label for="emplacementDansdepot">Emplacement dans la dépôt : <span class="red-star">*</span></label>
+        <input type="text" class="form-control" id="emplacementDansdepot" [(ngModel)]="emplacementDansdepot" name="emplacementDansdepot" required>
+        <div *ngIf="articleForm.controls['emplacementDansdepot']?.invalid && (articleForm.controls['emplacementDansdepot']?.dirty || articleForm.controls['emplacementDansdepot']?.touched)">
+          <div class="error-message" *ngIf="articleForm.controls['emplacementDansdepot']?.errors?.['required']">Le champ est obligatoire.</div>
+        </div>
+      </div>
+  
+      
+      <button type="submit" class="btn button-update" (click)="onUpdateArticle(articleForm)" >Modifier</button>
+      <button type="button" class="btn button-delete" (click)="annuler()">Annuler</button>
+    </form>
+  </div>
+ 
+ </div>
+</div>

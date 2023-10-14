@@ -1,0 +1,24 @@
+<div class="modal-overlay">
+    <div class="modal">
+
+<div class="content" *ngIf="delete" >
+  <p class="message">Êtes-vous sûr de vouloir supprimer cet élément ?</p>
+  <div class="actions">
+        <button class="yes"  (click)="confirm()">Confirmer</button>
+        <button class="no" (click)="cancel()">Annuler</button>
+  </div>
+
+</div>
+
+<div class="content" *ngIf="quitadd || quitupdate" >
+    <p class="message">Voulez-vous vraiment quitter ?</p>
+    <div class="actions">
+          <button class="yes"  (click)="confirm()">Oui</button>
+          <button class="no" (click)="cancel()">Non</button>
+    </div>
+  
+  </div>
+
+
+</div>
+</div>

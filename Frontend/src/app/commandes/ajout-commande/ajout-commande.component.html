@@ -1,0 +1,270 @@
+<div class="container">
+  <form #commandeForm="ngForm">
+    <h2>Ajouter une commande</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Informations client</div>
+          <div class="card-body">
+            <!-- Champs pour les informations client -->
+            <label for="client">Client: <span class="red-star">*</span></label>
+            <!--
+               <input type="text" id="client" name="client" [(ngModel)]="client" required (input)="filterClients(client)">
+
+<select *ngIf="suggestions.length > 0" [(ngModel)]="client" (change)="onClientSelect($event)" required>
+              <option *ngFor="let suggestion of suggestions" [value]="suggestion.nom">{{ suggestion.nom }}</option> 
+            </select>
+
+ -->
+            
+ <input type="text" [ngModel]="client" name="client" id="client"  (input)="onClientBlur()">
+ <div class="suggestions" id="suggestionsClient"></div>
+ 
+
+            <div *ngIf="commandeForm.controls['client']?.invalid && (commandeForm.controls['client']?.dirty || commandeForm.controls['client']?.touched)">
+              <div class="error-message" *ngIf="commandeForm.controls['client']?.errors?.['required']">Le champ est obligatoire.</div>
+            </div>
+
+
+
+            <label for="adresse">Adresse: <span class="red-star">*</span></label>
+            <input type="text" id="adresse" name="adresse" [(ngModel)]="adresse" required>
+            <div *ngIf="commandeForm.controls['adresse']?.invalid && (commandeForm.controls['adresse']?.dirty || commandeForm.controls['adresse']?.touched)">
+              <div class="error-message" *ngIf="commandeForm.controls['adresse']?.errors?.['required']">Le champ est obligatoire.</div>
+             </div>
+
+             <label for="telephone">Numéro de téléphone: <span class="red-star">*</span></label>
+             <input type="text" id="telephone" name="telephone" [(ngModel)]="telephone" required pattern="[0-9]{8}">
+             <div *ngIf="commandeForm.controls['telephone']?.invalid && (commandeForm.controls['telephone']?.dirty || commandeForm.controls['telephone']?.touched)">
+               <div class="error-message" *ngIf="commandeForm.controls['telephone']?.errors?.['required']">Le champ est obligatoire.</div>
+               <div class="error-message" *ngIf="commandeForm.controls['telephone']?.errors?.['pattern']">Le numéro de téléphone doit contenir exactement 8 chiffres.</div>
+             </div>
+             
+             
+
+
+            <label for="mf">MF:</label>
+            <input type="text" id="mf" name="mf" [(ngModel)]="mf">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card info">
+          <div class="card-header">Informations commande</div>
+          <div class="card-body">
+            <!-- Champs pour les informations de la commande -->
+           
+
+            <label for="type">Type: <span class="red-star">*</span></label>
+            <select id="type" name="type" [(ngModel)]="type" (blur)="onTypeBlur(type)" required>
+              <option value="bonLivraison">Bon de livraison</option>
+              <option value="facture">Facture</option>
+              <option value="devis">Devis</option>
+            </select>
+            <div *ngIf="commandeForm.controls['type']?.invalid && (commandeForm.controls['type']?.dirty || commandeForm.controls['type']?.touched)">
+              <div class="error-message" *ngIf="commandeForm.controls['type']?.errors?.['required']">Le champ est obligatoire.</div>
+             </div>
+
+             <label for="num">Numéro de commande: <span class="red-star">*</span></label>
+             <input type="text" id="num" name="num" [(ngModel)]="num" required>
+             <div *ngIf="commandeForm.controls['num']?.invalid && (commandeForm.controls['num']?.dirty || commandeForm.controls['num']?.touched)">
+               <div class="error-message" *ngIf="commandeForm.controls['num']?.errors?.['required']">Le champ est obligatoire.</div>
+              </div>
+ 
+
+             <label for="date">Date: <span class="red-star">*</span></label>
+             <input type="date" id="date" name="date" [(ngModel)]="date" required max="2024-01-01">
+             <div *ngIf="commandeForm.controls['date']?.invalid && (commandeForm.controls['date']?.dirty || commandeForm.controls['date']?.touched)">
+               <div class="error-message" *ngIf="commandeForm.controls['date']?.errors?.['required']">Le champ est obligatoire.</div>
+             </div>
+             
+             
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">Détails de la commande</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                <label for="reference">Référence</label>
+              </div>
+              <div class="col-md-3">
+                <label for="designation">Désignation <span class="red-star">*</span></label>
+              </div>
+              <div class="col-md-2">
+                <label for="quantite">Quantité <span class="red-star">*</span></label>
+              </div>
+              <div class="col-md-2">
+                <label for="prixVente">Prix de vente <span class="red-star">*</span></label>
+              </div>
+              <div class="col-md-2">
+                <label for="total">Total  <span class="red-star">*</span></label>
+              </div>
+              <div class="col-md-1">
+                <!-- Bouton pour ajouter une nouvelle ligne -->
+                <button (click)="ajouterLigne()">+</button>
+              </div>
+            </div>
+            <!-- Liste des lignes de commande -->
+            <div class="row " *ngFor="let article of articles; let i = index">
+              <div class="col-md-2 ">
+                <!--
+                  <select [(ngModel)]="article.reference" name="reference{{i}}" class="custom-select "
+                  (change)="getArticleByRef(article.reference); selectedArticleIndex = i">
+                  <option  *ngFor="let ref of refArticles" [value]="ref">{{ ref }}</option>
+                </select>
+                -->
+                
+                <input type="text" [(ngModel)]="article.reference" name="reference{{i}}" id="reference-{{i}}" placeholder="Référence" (input)="onRefBlur(i)">
+                <div class="suggestions" id="suggestions-{{i}}"></div>
+               
+
+              </div>
+              <div class="col-md-3">
+                <!--
+                  <select [(ngModel)]="article.designation" name="designation{{i}}" class="custom-select"
+              
+                  (change)="getArticleByDesignation(article.designation); selectedArticleIndex = i" required>
+                  <option *ngFor="let designation of nomArticles" [value]="designation">{{ designation }}</option>
+                </select>
+                -->
+                <input type="text" [(ngModel)]="article.designation" name="designation{{i}}" id="designation-{{i}}" placeholder="Designation" (input)="onDesignationBlur(i)">
+                <div class="suggestions" id="suggestionsDesignation-{{i}}"></div>
+                
+                
+
+                <div *ngIf="commandeForm.controls['designation' + i]?.invalid && (commandeForm.controls['designation' + i]?.dirty || commandeForm.controls['designation' + i]?.touched)">
+                  <div class="error-message" *ngIf="commandeForm.controls['designation' + i]?.errors?.['required']">Le champ est obligatoire.</div>
+                </div>
+              </div>
+              
+              <div class="col-md-2">
+                <input type="number" [(ngModel)]="article.quantite" name="quantite{{i}}" (blur)="onQuantiteBlur(article, i)" required>
+                <div *ngIf="commandeForm.controls['quantite' + i]?.invalid && (commandeForm.controls['quantite' + i]?.dirty || commandeForm.controls['quantite' + i]?.touched)">
+                  <div class="error-message" *ngIf="commandeForm.controls['quantite' + i]?.errors?.['required']">Le champ est obligatoire.</div>
+                </div>
+
+              </div>
+              <div class="col-md-2">
+                <input type="number" [(ngModel)]="article.prixVente" name="prixVente{{i}}">
+                <div *ngIf="commandeForm.controls['prixVente' + i]?.invalid && (commandeForm.controls['prixVente' + i]?.dirty || commandeForm.controls['prixVente' + i]?.touched)">
+                  <div class="error-message" *ngIf="commandeForm.controls['prixVente' + i]?.errors?.['required']">Le champ est obligatoire.</div>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <input type="number" [(ngModel)]="article.total" name="total{{i}}">
+                <div *ngIf="commandeForm.controls['total' + i]?.invalid && (commandeForm.controls['total' + i]?.dirty || commandeForm.controls['total' + i]?.touched)">
+                  <div class="error-message" *ngIf="commandeForm.controls['total' + i]?.errors?.['required']">Le champ est obligatoire.</div>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <!-- Bouton pour supprimer une ligne -->
+                <button class="button-" (click)="supprimerLigne(article)">-</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">Total </div>
+            <div class="card-body">
+              <!-- Champs pour le total, TVA, timbre fiscal et total net TTC -->
+              <label for="TotalMontant">Total: <span class="red-star">*</span></label>
+              <input type="number" id="TotalMontant" name="TotalMontant" [(ngModel)]="TotalMontant" required>
+              <div *ngIf="commandeForm.controls['TotalMontant']?.invalid && (commandeForm.controls['TotalMontant']?.dirty || commandeForm.controls['TotalMontant']?.touched)">
+                <div class="error-message" *ngIf="commandeForm.controls['TotalMontant']?.errors?.['required']">Le champ est obligatoire.</div>
+               </div>
+  
+  
+              <label for="TVA">TVA: <span class="red-star">*</span></label> 
+
+              <select [(ngModel)]="TVA" id="TVA" name="TVA" class="custom-select" (blur)="onTVABlur(TVA)" required>
+                  <option  [value]="19">19%</option>
+                  <option [value]="7">7%</option>
+                </select>
+                <br>
+
+              <div *ngIf="commandeForm.controls['TVA']?.invalid && (commandeForm.controls['TVA']?.dirty || commandeForm.controls['TVA']?.touched)">
+                <div class="error-message" *ngIf="commandeForm.controls['TVA']?.errors?.['required']">Le champ est obligatoire.</div>
+               </div>
+  
+  <div *ngIf="typeCmdFacture">
+     <label for="timbreFiscal" >Timbre Fiscal (dt) :  <span class="red-star">*</span></label>
+              <input type="number" id="timbreFiscal" name="timbreFiscal" [(ngModel)]="timbreFiscal" required>
+              <div *ngIf="commandeForm.controls['timbreFiscal']?.invalid && (commandeForm.controls['timbreFiscal']?.dirty || commandeForm.controls['timbreFiscal']?.touched)">
+                <div class="error-message" *ngIf="commandeForm.controls['timbreFiscal']?.errors?.['required']">Le champ est obligatoire.</div>
+               </div>
+  </div>
+             
+  
+  
+              <label for="totalNetTTC">Total Net TTC: <span class="red-star">*</span></label>
+              <input type="number" id="totalNetTTC" name="totalNetTTC" [(ngModel)]="totalNetTTC" required>
+              <div *ngIf="commandeForm.controls['totalNetTTC']?.invalid && (commandeForm.controls['totalNetTTC']?.dirty || commandeForm.controls['totalNetTTC']?.touched)">
+                <div class="error-message" *ngIf="commandeForm.controls['totalNetTTC']?.errors?.['required']">Le champ est obligatoire.</div>
+               </div>
+  
+            </div>
+          </div>
+        </div> 
+        <div class="col-md-6" *ngIf="!typeCmdFacture">
+          <div class="card">
+            <div class="card-header">Information de livraison</div>
+            <div class="card-body">
+              
+              <label for="chauffeur">Chauffeur: <span class="red-star">*</span></label>
+              <input type="text" id="chauffeur" name="chauffeur" [(ngModel)]="chauffeur" required>
+              <div *ngIf="commandeForm.controls['chauffeur']?.invalid && (commandeForm.controls['chauffeur']?.dirty || commandeForm.controls['chauffeur']?.touched)">
+                <div class="error-message" *ngIf="commandeForm.controls['chauffeur']?.errors?.['required']">Le champ est obligatoire.</div>
+               </div>
+  
+  
+              <label for="matriculeCamion">Matricule Camion: <span class="red-star">*</span></label>
+              <input type="text" id="matriculeCamion" name="matriculeCamion" [(ngModel)]="matriculeCamion" required>
+              <div *ngIf="commandeForm.controls['matriculeCamion']?.invalid && (commandeForm.controls['matriculeCamion']?.dirty || commandeForm.controls['matriculeCamion']?.touched)">
+                <div class="error-message" *ngIf="commandeForm.controls['matriculeCamion']?.errors?.['required']">Le champ est obligatoire.</div>
+               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6" *ngIf="typeCmdFacture">
+          <div class="card">
+            <div class="card-header">Arrétée la présente facture à la somme de :</div>
+            <div class="card-body">
+              
+             
+              <input type="text" id="somme" name="somme" [(ngModel)]="somme" required>
+               
+  
+  
+              
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="button-container">
+      <div *ngIf="!ajouterRoute" class="button-container__item">
+        <button class="btn-prec" (click)="prec()">Précédent</button>
+      </div>
+      <div class="button-container">
+        <button *ngIf="!ajouterRoute" class="btn-valider" (click)="modifier(commandeForm)">Modifier</button>
+        <button *ngIf="ajouterRoute" class="btn-valider" (click)="valider(commandeForm) ">Valider</button>
+      </div>
+    </div>
+
+  </form>
+</div>

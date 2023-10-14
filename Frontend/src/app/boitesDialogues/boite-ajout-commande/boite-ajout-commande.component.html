@@ -1,0 +1,37 @@
+<div class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header" *ngIf="!id">
+        <h4 class="modal-title">Ajouter une commande</h4>
+      </div>
+      <div class="modal-body" *ngIf="!id">
+        <form>
+          <!-- Champs du formulaire pour l'ajout de commande -->
+          <!-- Remplacez les valeurs ngModel par les propriétés appropriées de votre modèle de commande -->
+          <div class="form-group">
+            <label for="num">Numéro :</label>
+            <input type="number" class="form-control" id="num" [(ngModel)]="num" name="num" required>
+          </div>
+          <!-- ... Autres champs du formulaire pour l'ajout de commande ... -->
+          <button type="submit" class="btn button-add" (click)="onAddCommande(addForm)">Ajouter</button>
+          <button type="button" class="btn button-delete" (click)="annuler()">Annuler</button>
+        </form>
+      </div>
+      <div class="modal-header" *ngIf="id">
+        <h4 class="modal-title">Modifier la commande</h4>
+      </div>
+      <div class="modal-body" *ngIf="id">
+        <form>
+          <!-- Champs du formulaire pour la modification de commande -->
+          <!-- Remplacez les valeurs ngModel par les propriétés appropriées de votre modèle de commande -->
+          <div class="form-group">
+            <label for="num">Numéro :</label>
+            <input type="number" class="form-control" id="num" [(ngModel)]="num" name="num" required>
+          </div>
+          <!-- ... Autres champs du formulaire pour la modification de commande ... -->
+          <button type="submit" class="btn button-update" (click)="onUpdateCommande()">Modifier</button>
+          <button type="button" class="btn button-delete" (click)="annuler()">Annuler</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

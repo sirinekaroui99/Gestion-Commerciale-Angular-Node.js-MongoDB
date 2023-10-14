@@ -1,0 +1,125 @@
+
+  h2{
+    margin-left: 3%;
+  }
+
+
+  label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  select {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    width: 250px;
+    transition: border-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #6c63ff;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #6c63ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+ 
+  .custom-form-group {
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+    margin-top: 2%;
+  }
+  
+  button{
+    margin-top: -4%;
+  }
+
+  .custom-input-group {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+  
+  .custom-select {
+    width: 200px;
+    margin-right: 10px;
+  }
+  
+  .custom-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .custom-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .custom-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  }
+
+  .container-table{
+    margin: 1%;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+    max-height: 50%;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  
+  table th {
+    background-color: #348fc4;
+    color: #fff;
+  }
+
+  .btn-info{
+    background-color: #0056b3;
+    margin-left: 20%;
+    margin-right: 3%;
+  }
+
+  button {
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .button-container {
+    display: flex;
+    
+  }
+  

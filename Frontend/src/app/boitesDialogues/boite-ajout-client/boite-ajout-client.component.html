@@ -1,0 +1,78 @@
+<div class="modal-overlay">
+    <div class="modal">
+  
+      <div class="modal-header" *ngIf="!clientId">
+        <h4 class="modal-title">Ajouter client</h4>
+      </div>
+      <div class="modal-body" *ngIf="!clientId">
+        <form #clientForm="ngForm">
+          <div class="form-group">
+            <label for="nom">Nom :  <span class="red-star">*</span></label>
+            <input type="text" class="form-control" id="nom" [(ngModel)]="nom" name="nom" required>
+            <div *ngIf="clientForm.controls['nom']?.invalid && (clientForm.controls['nom']?.dirty || clientForm.controls['nom']?.touched)">
+              <div class="error-message" *ngIf="clientForm.controls['nom']?.errors?.['required']">Le champ est obligatoire.</div>
+             </div>
+          </div>
+          <div class="form-group">
+            <label for="adresse">Adresse :  <span class="red-star">*</span></label>
+            <input type="text" class="form-control" id="adresse" [(ngModel)]="adresse" name="adresse" required>
+            <div *ngIf="clientForm.controls['adresse']?.invalid && (clientForm.controls['adresse']?.dirty || clientForm.controls['adresse']?.touched)">
+              <div class="error-message" *ngIf="clientForm.controls['adresse']?.errors?.['required']">Le champ est obligatoire.</div>
+             </div>
+          </div>
+          <div class="form-group">
+            <label for="telephone">Numéro de téléphone: <span class="red-star">*</span></label>
+            <input type="text" id="telephone" name="telephone" [(ngModel)]="telephone" required pattern="[0-9]{8}">
+            <div *ngIf="clientForm.controls['telephone']?.invalid && (clientForm.controls['telephone']?.dirty || clientForm.controls['telephone']?.touched)">
+              <div class="error-message" *ngIf="clientForm.controls['telephone']?.errors?.['required']">Le champ est obligatoire.</div>
+              <div class="error-message" *ngIf="clientForm.controls['telephone']?.errors?.['pattern']">Le numéro de téléphone doit contenir exactement 8 chiffres.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mf">MF :</label>
+            <input type="text" class="form-control" id="mf" [(ngModel)]="mf" name="mf" >
+          </div>
+          <button type="submit" class="btn button-add" (click)="onAddClient(clientForm)">Ajouter</button>
+          <button type="button" class="btn button-delete" (click)="annuler()">Annuler</button>
+        </form>
+      </div>
+  
+      <div class="modal-header" *ngIf="clientId">
+        <h4 class="modal-title">Modifier le client</h4>
+      </div>
+      <div class="modal-body" *ngIf="clientId">
+        <form #clientForm="ngForm">
+          <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" class="form-control" id="nom" [(ngModel)]="nom" name="nom" required>
+            <div *ngIf="clientForm.controls['nom']?.invalid && (clientForm.controls['nom']?.dirty || clientForm.controls['nom']?.touched)">
+              <div class="error-message" *ngIf="clientForm.controls['nom']?.errors?.['required']">Le champ est obligatoire.</div>
+             </div>
+          </div>
+          <div class="form-group">
+            <label for="adresse">Adresse :</label>
+            <input type="text" class="form-control" id="adresse" [(ngModel)]="adresse" name="adresse" required>
+            <div *ngIf="clientForm.controls['adresse']?.invalid && (clientForm.controls['adresse']?.dirty || clientForm.controls['adresse']?.touched)">
+              <div class="error-message" *ngIf="clientForm.controls['adresse']?.errors?.['required']">Le champ est obligatoire.</div>
+             </div>
+          </div>
+          <div class="form-group">
+            <label for="telephone">Téléphone :</label>
+            <input type="number" class="form-control" id="telephone" [(ngModel)]="telephone" name="telephone" required minlength="8">
+            <div *ngIf="clientForm.controls['telephone']?.invalid && (clientForm.controls['telephone']?.dirty || clientForm.controls['telephone']?.touched)">
+              <div class="error-message" *ngIf="clientForm.controls['telephone']?.errors?.['required']">Le champ est obligatoire.</div>
+              <div class="error-message" *ngIf="clientForm.controls['telephone']?.errors?.['minlength']">Le numéro de téléphone doit contenir au moins 8 chiffres.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mf">MF :</label>
+            <input type="text" class="form-control" id="mf" [(ngModel)]="mf" name="mf">
+          </div>
+          <button type="submit" class="btn button-update" (click)="onUpdateClient(clientForm)">Modifier</button>
+          <button type="button" class="btn button-delete" (click)="annuler()">Annuler</button>
+        </form>
+      </div>
+  
+    </div>
+  </div>
+  

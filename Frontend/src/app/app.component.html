@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div *ngIf="isSidebarOpen && !isLoginComponent">
+    <div class="sidebar">
+      <div class="toggle-button toggle" (click)="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <ul class="menu">
+        <a [routerLink]="'/'" routerLinkActive="active">
+          <li [class.active]="selectedItem === 'accueil'" (click)="selectItem('accueil')">
+            <i class="fas fa-home icones"></i><span>Accueil</span>
+          </li>
+        </a>
+        <a [routerLink]="'/articles'" routerLinkActive="active">
+          <li [class.active]="selectedItem === 'articles'" (click)="selectItem('articles')">
+            <i class="fas fa-cubes icones"></i><span>Articles</span>
+          </li>
+        </a>
+        <a [routerLink]="'/commandes'" routerLinkActive="active">
+          <li [class.active]="selectedItem === 'commandes'" (click)="selectItem('commandes')">
+            <i class="fas fa-shopping-cart icones"></i><span>Commandes</span>
+          </li>
+        </a>
+        <a [routerLink]="'/ajouter-commande'" routerLinkActive="active">
+          <li [class.active]="selectedItem === 'ajouter-commande'" (click)="selectItem('ajouter-commande')">
+            <i class="fas fa-plus icones"></i><span>Ajouter commande</span>
+          </li>
+        </a>
+        <a [routerLink]="'/imprimer-commande'" routerLinkActive="active">
+          <li [class.active]="selectedItem === 'imprimer-commande'" (click)="selectItem('imprimer-commande')">
+            <i class="fas fa-print icones"></i><span>Imprimer commande</span>
+          </li>
+        </a>
+        <a [routerLink]="'/clients'" routerLinkActive="active">
+          <li [class.active]="selectedItem === 'clients'" (click)="selectItem('clients')">
+            <i class="fas fa-users icones"></i><span>Clients</span>
+          </li>
+        </a>
+      </ul>
+    </div>
+    <div class="content " id="print-content">
+      <!-- Contenu de la page -->
+      <ngx-toastr></ngx-toastr>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</body>
+</html>

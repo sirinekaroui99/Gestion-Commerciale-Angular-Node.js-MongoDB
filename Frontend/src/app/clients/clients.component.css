@@ -1,0 +1,154 @@
+
+
+.container {
+    max-width: 3000px;
+    margin: 0 0 0 0;
+    background-color: rgb(240, 243, 247);
+    padding: 10px 25px;
+  }
+  
+  .btn {
+    border-radius: 4px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+  }
+  
+  .btn-warning:hover {
+    background-color: #e0a800;
+  }
+  
+  .icon {
+    margin: 0;
+  }
+  
+  .td {
+    display: flex;
+    gap: 10px;
+    margin-left:10%;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search {
+    margin-right: 10px;
+  }
+  
+  .search input {
+    width: 200px;
+    padding: 5px;
+  }
+  
+  .add-btn {
+    background-color: #34c458;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  
+  table th {
+    background-color: #348fc4;
+    color: #fff;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input {
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: #555;
+    transition: border-color 0.3s;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #66afe9;
+  }
+  
+  .search-button {
+    padding: 8px;
+    background-color: #f2f2f2;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .search-button i {
+    color: #888;
+    font-size: 18px;
+  }
+  
+  .search-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .search-container {
+    position: relative;
+  }
+  
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+  
+  .search-input {
+    padding-left: 30px; /* Ajoutez un espacement à gauche pour l'icône */
+  }
+  
+  .icones{
+    margin-right: 10px;
+  }
